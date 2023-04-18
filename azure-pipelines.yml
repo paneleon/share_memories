@@ -9,40 +9,36 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '16.x'
-  displayName: 'Install Node.js'
+stages:
+- stage: Build
+  displayName: 'Build React Client Stage'
   
-- task: NodeTaskRunnerInstaller@0
-  inputs:
-    nodeVersion: '6'
+  jobs: 
+  - job: Build
+    displayName: 'Build'
+    
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '16.x'
+      displayName: 'Install Node.js'
 
-- task: Npm@1
-  displayName: 'Install client packages'
-  inputs:
-    command: 'install'
-    workingDir: 'client'
+    - task: Npm@1
+      displayName: 'Install client packages'
+      inputs:
+        command: 'install'
+        workingDir: 'client'
 
-- task: Npm@1
-  inputs:
-    command: 'custom'
-    workingDir: 'client'
-    customCommand: 'run build'
-  
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: '$(Build.SourcesDirectory)'
-    contents: |
-       src/*
-       public/*
-    targetFolder: '$(Build.ArtifactStagingDirectory)'
-  displayName: 'Copy project files'
-
-- task: PublishPipelineArtifact@1
-  inputs:
-    artifactName: share_memories_server
-    targetPath: '$(Build.ArtifactStagingDirectory)'
-    publishLocation: 'pipeline'
-  displayName: 'Publish npm artifact'    
+    - task: Npm@1
+      displayName: 'Build client'
+      inputs:
+        command: 'custom'
+        workingDir: 'client'
+        customCommand: 'run build'
+      
+    - task: Npm@1
+      displayName: 'Test client'
+      inputs:
+        command: 'custom'
+        workingDir: 'client'
+        customCommand: 'run test'
