@@ -22,10 +22,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest --coverage",
+    "test": "jest --coverage --coverageReporters=cobertura",
     "eject": "react-scripts eject",
     "lint": "eslint src",
-    "coverage": "jest test --coverage --watchAll=false && jest-sonar-reporter"
+    "coverage": "jest test --coverage --watchAll=false --coverageReporters=cobertura && jest-sonar-reporter"
   },
   "eslintConfig": {
     "extends": "react-app"
