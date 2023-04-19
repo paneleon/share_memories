@@ -56,3 +56,8 @@ stages:
         workingDir: 'client'
         customCommand: 'run lint'
       
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
