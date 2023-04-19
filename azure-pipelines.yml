@@ -24,20 +24,20 @@ stages:
       displayName: 'Install Node.js'
 
     - task: Npm@1
-      displayName: 'Install client packages'
+      displayName: 'Install NPM packages'
       inputs:
         command: 'install'
         workingDir: 'client'
 
     - task: Npm@1
-      displayName: 'Build client'
+      displayName: 'Build React App'
       inputs:
         command: 'custom'
         workingDir: 'client'
         customCommand: 'run build'
       
     - task: Npm@1
-      displayName: 'Test client'
+      displayName: 'Test React App'
       inputs:
         command: 'custom'
         workingDir: 'client'
