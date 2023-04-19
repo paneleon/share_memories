@@ -22,8 +22,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
-    "eject": "react-scripts eject"
+    "test": "jest --coverage",
+    "eject": "react-scripts eject",
+    "coverage": "jest test --coverage --watchAll=false && jest-sonar-reporter"
   },
   "eslintConfig": {
     "extends": "react-app"
