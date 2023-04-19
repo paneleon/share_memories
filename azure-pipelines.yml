@@ -47,8 +47,7 @@ stages:
       displayName: 'Code Coverage'
       inputs:
         codeCoverageTool: 'Cobertura'
-        summaryFileLocation: 'client/coverage/lcov.info'
-        reportDirectory: 'client/coverage/coverage'  
+        summaryFileLocation: 'client/coverage/cobertura-coverage.xml'
 
     - task: Npm@1
       displayName: 'ESLint Code analysis'
