@@ -24,6 +24,7 @@
     "build": "react-scripts build",
     "test": "jest --coverage",
     "eject": "react-scripts eject",
+    "lint": "eslint src",
     "coverage": "jest test --coverage --watchAll=false && jest-sonar-reporter"
   },
   "eslintConfig": {
