@@ -35,6 +35,7 @@ stages:
         command: 'custom'
         workingDir: 'client'
         customCommand: 'run build'
+
       
     - task: Npm@1
       displayName: 'Test React App'
@@ -57,7 +58,8 @@ stages:
         customCommand: 'run lint'
       
     - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: client'
       inputs:
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        ArtifactName: 'drop'
+        PathtoPublish: '$(Build.SourcesDirectory)/client/build'
+        ArtifactName: 'Share-Memories-React'
         publishLocation: 'Container'
