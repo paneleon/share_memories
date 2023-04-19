@@ -60,6 +60,7 @@ stages:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact: client'
       inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)/client/build'
+        # PathtoPublish: '$(Build.SourcesDirectory)/client/build'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
         ArtifactName: 'Share-Memories-React'
         publishLocation: 'Container'
