@@ -67,6 +67,7 @@ stages:
       
 - stage: Deliver
   displayName: 'Deliver React App'
+  dependsOn: Build
   
   jobs: 
   - job: Deliver
