@@ -58,8 +58,16 @@ stages:
         customCommand: 'run lint'
       
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact'
+      displayName: 'Publish Artifact to Azure'
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)/client/build'
         ArtifactName: 'Share-Memories-React'
         publishLocation: 'Container'
+
+    - task: UniversalPackages@0
+      displayName: 'Publish Artifact to Feed'
+      inputs:
+        command: 'publish'
+        publishDirectory: '$(Build.SourcesDirectory)/client/build'
+        vstsFeedPublish: 'share_memories'
+        vstsFeedPackagePublish: 'share_memories_artifact'
