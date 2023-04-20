@@ -58,9 +58,9 @@ stages:
         customCommand: 'run lint'
       
     - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact: client'
+      displayName: 'Publish Artifact'
       inputs:
         # PathtoPublish: '$(Build.SourcesDirectory)/client/build'
-        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)/client/build'
         ArtifactName: 'Share-Memories-React'
         publishLocation: 'Container'
