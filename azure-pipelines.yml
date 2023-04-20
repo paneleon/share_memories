@@ -79,7 +79,7 @@ stages:
     #   displayName: 'List Build DefaultWorkingDirectory Contents'
 
     - script: |
-        ls $(Build.SourcesDirectory)
+        ls $(Build.SourcesDirectory)/client
       displayName: 'List Build SourcesDirectory Contents'
     
     - script: |
@@ -90,7 +90,7 @@ stages:
       inputs:
         # pathtoPublish: '$(Pipeline.Workspace)/client/build'
         # pathtoPublish: '$(System.DefaultWorkingDirectory)/client/build'
-        pathtoPublish: '$(Build.SourcesDirectory)/client/build'
+        pathtoPublish: '$(Build.SourcesDirectory)/client'
         artifactName: 'Share-Memories-React'
       displayName: 'Publish Artifact'
   
