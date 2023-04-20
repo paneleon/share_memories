@@ -56,6 +56,13 @@ stages:
         command: 'custom'
         workingDir: 'client'
         customCommand: 'run lint'
+        
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact to Azure'
+      inputs:
+        PathtoPublish: '$(Build.SourcesDirectory)/client/build'
+        ArtifactName: 'Share-Memories-React'
+        publishLocation: 'Container'
       
       
 - stage: Deliver
@@ -65,12 +72,5 @@ stages:
   - job: Deliver
     displayName: 'Deliver'
 
-    steps:
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact to Azure'
-      inputs:
-        PathtoPublish: '$(Build.SourcesDirectory)/client/build'
-        ArtifactName: 'Share-Memories-React'
-        publishLocation: 'Container'
 
   
