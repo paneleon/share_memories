@@ -74,32 +74,21 @@ stages:
     displayName: 'Deliver'
 
     steps:
-    # - script: |
-    #     ls $(System.DefaultWorkingDirectory)/client/build
-    #   displayName: 'List Build DefaultWorkingDirectory Contents'
 
     - script: |
-        ls $(Build.SourcesDirectory)/client
-      displayName: 'List Build SourcesDirectory Contents'
-
-    - script: |
-        ls $(Pipeline.Workspace)
+        ls $(Pipeline.Workspace)/b
       displayName: 'List $(Pipeline.Workspace) Contents'
 
     - script: |
         ls $(Build.ArtifactStagingDirectory)
       displayName: 'List $(Build.ArtifactStagingDirectory) Contents'
 
-    - script: |
-        ls $(System.DefaultWorkingDirectory)/client
-      displayName: 'List $(System.DefaultWorkingDirectory)/client Contents'
-
-
     - task: PublishBuildArtifacts@1
       inputs:
         # pathtoPublish: '$(Pipeline.Workspace)/client/build'
         # pathtoPublish: '$(System.DefaultWorkingDirectory)/client/build'
-        pathtoPublish: '$(Build.SourcesDirectory)/client'
+        # pathtoPublish: '$(Build.SourcesDirectory)/client'
+        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
         artifactName: 'Share-Memories-React'
       displayName: 'Publish Artifact'
   
