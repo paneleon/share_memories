@@ -89,7 +89,7 @@ stages:
     - task: PublishBuildArtifacts@1
       inputs:
         # pathtoPublish: '$(Pipeline.Workspace)/client/build'
-        pathtoPublish: '$(System.DefaultWorkingDirectory)/client/build'
+        # pathtoPublish: '$(System.DefaultWorkingDirectory)/client/build'
         pathtoPublish: '$(Build.SourcesDirectory)/client/build'
         artifactName: 'Share-Memories-React'
       displayName: 'Publish Artifact'
