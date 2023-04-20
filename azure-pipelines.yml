@@ -63,11 +63,3 @@ stages:
         PathtoPublish: '$(Build.SourcesDirectory)/client/build'
         ArtifactName: 'Share-Memories-React'
         publishLocation: 'Container'
-
-    - task: UniversalPackages@0
-      displayName: 'Publish Artifact to Feed'
-      inputs:
-        command: 'publish'
-        publishDirectory: '$(Build.SourcesDirectory)/client/build'
-        vstsFeedPublish: 'share_memories'
-        vstsFeedPackagePublish: 'share_memories_artifact'
