@@ -57,38 +57,11 @@ stages:
         workingDir: 'client'
         customCommand: 'run lint'
         
-    # - task: PublishBuildArtifacts@1
-    #   displayName: 'Publish Artifact to Azure'
-    #   inputs:
-    #     PathtoPublish: '$(Build.SourcesDirectory)/client/build'
-    #     ArtifactName: 'Share-Memories-React'
-    #     publishLocation: 'Container'
-      
-      
-- stage: Deliver
-  displayName: 'Deliver React App'
-  dependsOn: Build
-  
-  jobs: 
-  - job: Deliver
-    displayName: 'Deliver'
-
-    steps:
-
-    - script: |
-        ls $(Pipeline.Workspace)/b
-      displayName: 'List $(Pipeline.Workspace) Contents'
-
-    - script: |
-        ls $(Build.ArtifactStagingDirectory)
-      displayName: 'List $(Build.ArtifactStagingDirectory) Contents'
-
     - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact to Azure'
       inputs:
-        # pathtoPublish: '$(Pipeline.Workspace)/client/build'
-        # pathtoPublish: '$(System.DefaultWorkingDirectory)/client/build'
-        # pathtoPublish: '$(Build.SourcesDirectory)/client'
-        pathtoPublish: '$(Build.ArtifactStagingDirectory)'
-        artifactName: 'Share-Memories-React'
-      displayName: 'Publish Artifact'
+        PathtoPublish: '$(Build.SourcesDirectory)/client/build'
+        ArtifactName: 'Share-Memories-React'
+        publishLocation: 'Container'
+    
   
