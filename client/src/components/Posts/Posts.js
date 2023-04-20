@@ -1,7 +1,6 @@
 import React from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { useSelector } from 'react-redux';
-
 import Post from './Post/Post';
 import useStyles from './styles';
 
@@ -10,7 +9,7 @@ const Posts = ({ setCurrentId }) => {
   const classes = useStyles();
 
   return (
-    !posts.length ? <CircularProgress /> : (
+    !posts.length ? <h1>No posts</h1> : ( // if posts.length is 0, then show "No posts", fix to <CirccularProgress /> bug
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {posts.map((post) => (
           <Grid key={post._id} item xs={12} sm={6} md={6}>
