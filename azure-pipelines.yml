@@ -74,6 +74,14 @@ stages:
     displayName: 'Deliver'
 
     steps:
+    - script: |
+        ls $(System.DefaultWorkingDirectory)/client/build
+      displayName: 'List Build DefaultWorkingDirectory Contents'
+
+    - script: |
+        ls $(Build.SourcesDirectory)/client/build
+      displayName: 'List Build SourcesDirectory Contents'
+
     - task: PublishBuildArtifacts@1
       inputs:
         # pathtoPublish: '$(Pipeline.Workspace)/client/build'
