@@ -34,7 +34,7 @@ stages:
       inputs:
         command: 'custom'
         workingDir: 'client'
-        customCommand: 'run build'
+        customCommand: 'run build && zip -r build.zip build'
 
       
     - task: Npm@1
