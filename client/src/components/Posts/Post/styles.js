@@ -49,4 +49,8 @@ export default makeStyles({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  date: {
+    width: '50%',
+    margin: '20px',
+  },
 });
