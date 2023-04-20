@@ -79,11 +79,11 @@ stages:
     #   displayName: 'List Build DefaultWorkingDirectory Contents'
 
     - script: |
-        ls $(Build.SourcesDirectory)/client/build
+        ls $(Build.SourcesDirectory)
       displayName: 'List Build SourcesDirectory Contents'
     
     - script: |
-        ls $(Pipeline.Workspace)/client/build
+        ls $(Pipeline.Workspace)
       displayName: 'List Pipeline.Workspace Contents'
 
     - task: PublishBuildArtifacts@1
