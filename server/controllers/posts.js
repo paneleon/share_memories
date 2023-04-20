@@ -76,5 +76,17 @@ export const likePost = async (req, res) => {
     res.json(updatedPost);
 }
 
+export const searchPosts = async (req, res) => { 
+    try {
+        const {keyword} = req.query
+        const searchRegEx = new RegExp(keyword, "gi");
+        const posts = await PostMessage.find({$or: [{title: searchRegEx}, {tags: {$elemMatch: {$eq: keyword}}}, {creator: searchRegEx}]});
+                
+        res.status(200).json(posts);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
 
 export default router;
