@@ -57,9 +57,20 @@ stages:
         workingDir: 'client'
         customCommand: 'run lint'
       
+      
+- stage: Deliver
+  displayName: 'Deliver React App'
+  
+  jobs: 
+  - job: Deliver
+    displayName: 'Deliver'
+
+    steps:
     - task: PublishBuildArtifacts@1
       displayName: 'Publish Artifact to Azure'
       inputs:
         PathtoPublish: '$(Build.SourcesDirectory)/client/build'
         ArtifactName: 'Share-Memories-React'
         publishLocation: 'Container'
+
+  
