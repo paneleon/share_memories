@@ -83,8 +83,8 @@ stages:
       displayName: 'List Build SourcesDirectory Contents'
     
     - script: |
-        ls $(Pipeline.Workspace)
-      displayName: 'List Pipeline.Workspace Contents'
+        ls $(System.DefaultWorkingDirectory)/client
+      displayName: 'List $(System.DefaultWorkingDirectory)/client Contents'
 
     - task: PublishBuildArtifacts@1
       inputs:
