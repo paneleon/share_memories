@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Grid, CircularProgress } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { search, getPosts } from '../../actions/posts';
-
 import Post from './Post/Post';
 import useStyles from './styles';
 
@@ -23,7 +22,8 @@ const Posts = ({ setCurrentId }) => {
   return (
     <>
       <SearchBar keyword={keyword} setKeyword={setKeyword} handleSearch={handleSearch} />
-      { !posts.length ? <CircularProgress /> : (
+      {/* #2 bug fixed removed  */}
+      { !posts.length ? <h1>No posts</h1> : (
         <Grid className={classes.container} container alignItems="stretch" spacing={3}>
           {posts.map((post) => (
             <Grid key={post._id} item xs={12} sm={6} md={6}>
