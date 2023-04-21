@@ -26,7 +26,7 @@ stages:
     - task: Npm@1
       displayName: 'Install NPM packages'
       inputs:
-        command: 'install'
+        customCommand: 'install --legacy-peer-deps'
         workingDir: 'client'
 
     - task: Npm@1

@@ -28,9 +28,9 @@ export const getPost = async (req, res) => {
 }
 
 export const createPost = async (req, res) => {
-    const { title, message, selectedFile, creator, tags } = req.body;
+    const { title, message, selectedFile, creator, tags, date } = req.body;
 
-    const newPostMessage = new PostMessage({ title, message, selectedFile, creator, tags })
+    const newPostMessage = new PostMessage({ title, message, selectedFile, creator, tags, date })
 
     try {
         await newPostMessage.save();
@@ -43,11 +43,11 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const { id } = req.params;
-    const { title, message, creator, selectedFile, tags } = req.body;
+    const { title, message, creator, selectedFile, tags, date } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = { creator, title, message, tags, selectedFile, _id: id };
+    const updatedPost = { creator, title, message, tags, selectedFile, date, _id: id };
 
     await PostMessage.findByIdAndUpdate(id, updatedPost, { new: true });
 
@@ -74,6 +74,18 @@ export const likePost = async (req, res) => {
     const updatedPost = await PostMessage.findByIdAndUpdate(id, { likeCount: post.likeCount + 1 }, { new: true });
     
     res.json(updatedPost);
+}
+
+export const searchPosts = async (req, res) => { 
+    try {
+        const {keyword} = req.query
+        const searchRegEx = new RegExp(keyword, "gi");
+        const posts = await PostMessage.find({$or: [{title: searchRegEx}, {tags: {$elemMatch: {$eq: keyword}}}, {creator: searchRegEx}]});
+                
+        res.status(200).json(posts);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
 }
 
 

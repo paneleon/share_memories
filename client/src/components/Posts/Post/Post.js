@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
+import { Card, CardActions, CardContent, CardMedia, Button, Typography, Chip } from '@material-ui/core/';
 import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
@@ -30,6 +30,7 @@ const Post = ({ post, setCurrentId }) => {
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">{post.message}</Typography>
       </CardContent>
+      <Chip label={post.date && moment(post.date).format('ll')} size="small" variant="outlined" className={classes.date} />
       <CardActions className={classes.cardActions}>
         <Button size="small" color="primary" onClick={() => dispatch(likePost(post._id))}><ThumbUpAltIcon fontSize="small" /> Like {post.likeCount} </Button>
         <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button>

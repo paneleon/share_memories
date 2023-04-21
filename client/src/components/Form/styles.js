@@ -26,4 +26,17 @@ export default makeStyles((theme) => ({
   buttonClear: {
     backgroundColor: '#DAF5FF',
   },
+  date: {
+    marginLeft: '10px',
+    background: '#F0F0F0',
+    padding: '15px',
+    border: 'none',
+    fontFamily: 'Arial',
+    // '&::-webkit-calendar-picker-indicator': {
+    //   background: '#ffffff',
+    //   padding: '5px',
+    //   cursor: 'pointer',
+    //   borderRadius: '3px',
+    // },
+  },
 }));
