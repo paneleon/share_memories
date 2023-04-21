@@ -12,6 +12,7 @@ const Posts = ({ setCurrentId }) => {
   const dispatch = useDispatch();
 
   const handleSearch = async () => {
+    console.log('keyword');
     if (keyword) {
       dispatch(search(keyword));
     } else {
