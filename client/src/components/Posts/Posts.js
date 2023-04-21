@@ -9,7 +9,8 @@ const Posts = ({ setCurrentId }) => {
   const classes = useStyles();
 
   return (
-    !posts.length ? <h1>No posts</h1> : ( // if posts.length is 0, then show "No posts", fix to <CirccularProgress /> bug
+    // #2 bug fixed removed <CircularProgress />
+    !posts.length ? <h1>No posts</h1> : (
       <Grid className={classes.container} container alignItems="stretch" spacing={3}>
         {posts.map((post) => (
           <Grid key={post._id} item xs={12} sm={6} md={6}>
